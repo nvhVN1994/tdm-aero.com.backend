@@ -1,0 +1,12 @@
+# Bỏ qua file chứa thông tin nhạy cảm
+.env
+
+# Bỏ thư mục Python cache
+__pycache__/
+*.pyc
+
+# Nếu dùng VS Code
+.vscode/
+
+# Nếu dùng virtualenv trong thư mục backend
+venv/
