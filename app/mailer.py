@@ -16,3 +16,7 @@ def send_email(data):
         server.starttls()
         server.login(os.getenv('SMTP_USERNAME'), os.getenv('SMTP_PASSWORD'))
         server.send_message(msg)
+print("FROM:", os.getenv("SMTP_USERNAME"))
+print("TO:", os.getenv("EMAIL_TO"))
+print("SMTP server:", os.getenv("SMTP_SERVER"))
+print("SMTP port:", os.getenv("SMTP_PORT"))
