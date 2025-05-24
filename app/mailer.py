@@ -6,7 +6,7 @@ import os
 def send_email(data):
     msg = MIMEMultipart()
     msg['From'] = os.getenv('SMTP_USERNAME')
-    msg['To'] = os.getenv('EMAIL_RECIPIENT')
+    msg['To'] = "nguyenviethoangbk1.14k58@gmail.com"
     msg['Subject'] = 'New Quote Request from Website'
 
     content = "\n".join([f"{k}: {v}" for k, v in data.items()])
@@ -16,7 +16,4 @@ def send_email(data):
         server.starttls()
         server.login(os.getenv('SMTP_USERNAME'), os.getenv('SMTP_PASSWORD'))
         server.send_message(msg)
-print("FROM:", os.getenv("SMTP_USERNAME"))
-print("TO:", os.getenv("EMAIL_TO"))
-print("SMTP server:", os.getenv("SMTP_SERVER"))
-print("SMTP port:", os.getenv("SMTP_PORT"))
+p
