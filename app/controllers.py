@@ -1,7 +1,6 @@
 from flask import jsonify
 from .utils import verify_recaptcha
-from .telegram import send_telegram_message
-from .whatsapp import send_whatsapp_message  # 👈 THÊM DÒNG NÀY
+from .mailer import send_email
 
 def handle_form_submission(data):
     try:
@@ -12,14 +11,8 @@ def handle_form_submission(data):
         if not verify_recaptcha(token):
             return jsonify({ 'message': 'Failed reCAPTCHA verification' }), 403
 
-        # Soạn tin nhắn
-        message = "\n".join([f"{k}: {v}" for k, v in data.items() if k != 'recaptchaToken'])
-
-        # Gửi qua Telegram và WhatsApp
-        send_telegram_message(data)
-        send_whatsapp_message(f"📨 New RFQ Submission:\n{message}")  # 👈 GỌI WHATSAPP
-
-        return jsonify({ 'message': 'Form submitted and sent to Telegram & WhatsApp!' }), 200
+        send_email(data)
+        return jsonify({ 'message': 'Form submitted and sent to email!' }), 200
 
     except Exception as e:
         import traceback
