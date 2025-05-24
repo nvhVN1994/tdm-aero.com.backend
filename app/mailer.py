@@ -6,7 +6,7 @@ def send_email(data):
     msg = EmailMessage()
     msg["Subject"] = "New Quote Request"
     msg["From"] = os.getenv("SMTP_USERNAME")
-    msg["To"] = "nguyenviethoangbk1.14k58@gmail.com"  # 📌 BẠN PHẢI ĐIỀN CHÍNH XÁC Ở ĐÂY
+    msg["To"] = os.getenv("EMAIL_RECIPIENT")  
 
     msg.set_content("\n".join(f"{k}: {v}" for k, v in data.items()))
 
